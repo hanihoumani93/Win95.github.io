@@ -1,0 +1,109 @@
+<script>
+
+	var x1,y1,x2,y2;
+	var x1v,y1v,x2v,y2v;
+
+	var x1r,y1r,x2r,y2r;
+	var x1rv,y1rv,x2rv,y2rv;
+
+	window.onload = function(){
+		canv = document.createElement("canvas");
+		canv.width = 1000;
+		canv.height = 600;
+		contx = canv.getContext('2d');
+		document.body.appendChild(canv);
+		contx.fillRect(0,0,canv.width, canv.height);
+
+		x1= Math.random()*canv.width;
+		y1= Math.random()*canv.height;
+		x2= Math.random()*canv.width;
+		y2= Math.random()*canv.height;
+
+		x1r= Math.random()*canv.width;
+		y1r= Math.random()*canv.height;
+		x2r= Math.random()*canv.width;
+		y2r= Math.random()*canv.height;
+
+		x1v=5-Math.random()*10;
+		y1v=5-Math.random()*10;
+		x2v=5-Math.random()*10;
+		y2v=5-Math.random()*10;
+
+		x1rv=5-Math.random()*10;
+		y1rv=5-Math.random()*10;
+		x2rv=5-Math.random()*10;
+		y2rv=5-Math.random()*10;
+
+		setInterval(update, 1000/30);
+	}
+
+	function update(){
+
+		contx.fillStyle = "black";
+		contx.globalAlpha = 0.02;
+		contx.fillRect(0, 0,canv.width, canv.height);
+		contx.globalAlpha = 1.0;
+
+		x1 += x1v;
+		y1 += y1v;
+		x2 += x2v;
+		y2 += y2v;
+
+		x1r += x1rv;
+		y1r += y1rv;
+		x2r += x2rv;
+		y2r += y2rv;
+
+		if (x1 > canv.width || x1 < 1) {
+			x1v *= -1;
+		}
+
+
+		if (y1 > canv.height || y1 < 1) {
+			y1v *= -1;
+		}
+
+		if (x2 > canv.width || x2 < 1) {
+			x2v *= -1;
+		}
+
+
+		if (y2 > canv.height || y2 < 1) {
+			y2v *= -1;
+		}
+
+		if (x1r > canv.width || x1r < 1) {
+			x1rv *= -1;
+		}
+
+
+		if (y1r > canv.height || y1r < 1) {
+			y1rv *= -1;
+		}
+
+		if (x2r > canv.width || x2r < 1) {
+			x2rv *= -1;
+		}
+
+
+		if (y2r > canv.height || y2r < 1) {
+			y2rv *= -1;
+		}
+
+		
+
+		contx.strokeStyle = "cyan";
+		contx.beginPath();
+		contx.moveTo(x1,y1);
+		contx.lineTo(x2,y2);
+		contx.stroke()
+		contx.closePath();
+
+		contx.strokeStyle = "red";
+		contx.beginPath();
+		contx.moveTo(x1r,y1r);
+		contx.lineTo(x2r, y2r);
+		contx.stroke();
+		contx.closePath();
+	}
+</script>
